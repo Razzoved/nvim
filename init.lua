@@ -13,6 +13,5 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("vim-options")
-
-require("lazy.view.config").keys.close = "<Esc>"
 require("lazy").setup("plugins")
+require("lazy.view.config").keys.close = "<Esc>"
