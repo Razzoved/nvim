@@ -3,7 +3,14 @@ return {
         "williamboman/mason.nvim",
         config = function()
             require("mason").setup({
-                PATH = "prepend"
+                PATH = "prepend",
+                ui = {
+                    icons = {
+                        package_installed = "✓",
+                        package_pending = "➜",
+                        package_uninstalled = "✗"
+                    }
+                }
             })
         end
     },
@@ -13,10 +20,21 @@ return {
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     "lua_ls",
-                    "csharp_ls",
-                    "tsserver",
-                    --"html",
-                    --"intelephense"
+                    "omnisharp_mono",
+                },
+                handlers = {
+                    function (server_name)
+                        require("lspconfig")[server_name].setup({});
+                    end,
+                    ["lua_ls"] = function ()
+                        require("lspconfig").lua_ls.setup({
+                            settings = {
+                                Lua = {
+                                    diagnostics = { globals = { "vim" } }
+                                }
+                            }
+                        })
+                    end
                 }
             })
         end
@@ -24,15 +42,6 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = function()
-            local lspconfig = require("lspconfig")
-
-            -- servers
-            lspconfig.lua_ls.setup({})
-            lspconfig.csharp_ls.setup({})
-            lspconfig.tsserver.setup({})
-            --lspconfig.html.setup({})
-            --lspconfig.intelephense.setup({})
-
             -- keybinds
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
@@ -40,4 +49,3 @@ return {
         end
     }
 }
-
