@@ -11,11 +11,22 @@ return {
 				ensure_installed = {
 					"lua_ls",
 					"csharp_ls",
+					"intelephense",
 				},
 				handlers = {
 					function(server_name)
 						require("lspconfig")[server_name].setup({
 							capabilities = capabilities,
+						})
+					end,
+					["intelephense"] = function()
+						require("lspconfig").intelephense.setup({
+							capabilities = capabilities,
+							settings = {
+								intelephense = {
+									files = { maxSize = 5000000 },
+								},
+							},
 						})
 					end,
 				},

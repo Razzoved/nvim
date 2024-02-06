@@ -10,8 +10,6 @@ return {
 			ensure_installed = {
 				-- lua
                 "stylua",
-                -- php
-                "easy-coding-standard",
                 -- c#
                 "csharpier"
 			},
