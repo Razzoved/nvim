@@ -12,6 +12,7 @@ return {
 					"lua_ls",
 					"csharp_ls",
 					"intelephense",
+                    "powershell_es",
 				},
 				handlers = {
 					function(server_name)
