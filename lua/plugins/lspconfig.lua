@@ -42,13 +42,19 @@ return {
 			local capabilities = lsp.default_capabilities()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
+                    --[[ COMPILED LANGUAGES ]]
 					"csharp_ls",
-					"dockerls",
 					"fsautocomplete", -- f#
-					"intelephense", -- php
+                    "gopls", -- golang
+                    --[[ SCRIPTING LANGUAGES ]]
 					"lua_ls",
+					"intelephense", -- php
+                    --[[ UTILITIES ]]
+                    "sqls",
+					"dockerls",
 					"powershell_es",
 					"taplo", -- toml
+                    "jsonls",
 				},
 				handlers = {
 					function(server_name)
