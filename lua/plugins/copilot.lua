@@ -7,10 +7,9 @@ return {
 	},
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
-		--branch = "canary",
 		dependencies = {
 			{ "github/copilot.vim" },
-			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-lua/plenary.nvim", branch = "master" },
 		},
 		opts = {
 			--debug = true,
