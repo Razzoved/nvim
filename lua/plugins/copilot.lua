@@ -71,14 +71,15 @@ return {
 					normal = "gmd",
 				},
 				-- Show the prompt
-				show_system_prompt = {
+				show_info = {
 					normal = "gmp",
 				},
 				-- Show the user selection
-				show_user_selection = {
+				show_show_context = {
 					normal = "gms",
 				},
 			},
+			chat_autocomplete = true,
 		},
 		event = "VeryLazy",
 		keys = {
@@ -167,10 +168,7 @@ return {
 			local select = require("CopilotChat.select")
 			-- Use unnamed register for the selection
 			opts.selection = select.unnamed
-
 			chat.setup(opts)
-			-- Setup the CMP integration
-			require("CopilotChat.integrations.cmp").setup()
 
 			vim.api.nvim_create_user_command("CopilotChatVisual", function(args)
 				chat.ask(args.args, { selection = select.visual })
