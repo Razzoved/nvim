@@ -64,7 +64,7 @@ return {
 					json = { "array" },
 				},
 				provider_selector = function(_, _, _)
-					return { "treesitter", "indent" }
+					return { "lsp", "indent" }
 				end,
 				fold_virt_text_handler = foldHandler,
 				preview = {
